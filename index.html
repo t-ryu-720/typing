@@ -3,53 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>タイピングGame</title>
+    <title>勉強タイピングGame</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p class="result">[Enter] Game Start</p><span></span>
-    <p class="word"></p>
-    <p class="reading"></p>
-    <div class="keyboard-wrapper">
-        <!-- 一番上の段 -->
-        <div class="keys">
-            <input type="button" value="Q" onclick="typed(event)" />
-            <input type="button" value="W" onclick="typed(event)" />
-            <input type="button" value="E" onclick="typed(event)" />
-            <input type="button" value="R" onclick="typed(event)" />
-            <input type="button" value="T" onclick="typed(event)" />
-            <input type="button" value="Y" onclick="typed(event)" />
-            <input type="button" value="U" onclick="typed(event)" />
-            <input type="button" value="I" onclick="typed(event)" />
-            <input type="button" value="O" onclick="typed(event)" />
-            <input type="button" value="P" onclick="typed(event)" />
+    <div class="container">
+        <p class="result">[Enter] Game Start</p>
+        <p class="level">レベル: <span id="level">1</span></p>
+        <p class="score">スコア: <span id="score">0</span></p>
+        <p class="word"></p>
+        <p class="question"></p>
+        <div class="timer">タイム: <span id="time">30</span></div>
+        <div class="keyboard-wrapper">
+            <!-- 仮想キーボードを追加する -->
+            <div class="keys">
+                <input type="button" value="Q" onclick="typed(event)" />
+                <input type="button" value="W" onclick="typed(event)" />
+                <input type="button" value="E" onclick="typed(event)" />
+                <input type="button" value="R" onclick="typed(event)" />
+                <input type="button" value="T" onclick="typed(event)" />
+                <input type="button" value="Y" onclick="typed(event)" />
+                <input type="button" value="U" onclick="typed(event)" />
+                <input type="button" value="I" onclick="typed(event)" />
+                <input type="button" value="O" onclick="typed(event)" />
+                <input type="button" value="P" onclick="typed(event)" />
+            </div>
+            <div class="keys">
+                <input type="button" value="A" onclick="typed(event)" />
+                <input type="button" value="S" onclick="typed(event)" />
+                <input type="button" value="D" onclick="typed(event)" />
+                <input type="button" value="F" onclick="typed(event)" />
+                <input type="button" value="G" onclick="typed(event)" />
+                <input type="button" value="H" onclick="typed(event)" />
+                <input type="button" value="J" onclick="typed(event)" />
+                <input type="button" value="K" onclick="typed(event)" />
+                <input type="button" value="L" onclick="typed(event)" />
+            </div>
+            <div class="keys">
+                <input type="button" value="Z" onclick="typed(event)" />
+                <input type="button" value="X" onclick="typed(event)" />
+                <input type="button" value="C" onclick="typed(event)" />
+                <input type="button" value="V" onclick="typed(event)" />
+                <input type="button" value="B" onclick="typed(event)" />
+                <input type="button" value="N" onclick="typed(event)" />
+                <input type="button" value="M" onclick="typed(event)" />
+            </div>
+            <div class="keys">
+                <input type="button" value="SPACE" onclick="typed(event)" />
+            </div>
         </div>
-        <!-- 真ん中の段 -->
-        <div class="keys">
-            <input type="button" value="A" onclick="typed(event)" />
-            <input type="button" value="S" onclick="typed(event)" />
-            <input type="button" value="D" onclick="typed(event)" />
-            <input type="button" value="F" onclick="typed(event)" />
-            <input type="button" value="G" onclick="typed(event)" />
-            <input type="button" value="H" onclick="typed(event)" />
-            <input type="button" value="J" onclick="typed(event)" />
-            <input type="button" value="K" onclick="typed(event)" />
-            <input type="button" value="L" onclick="typed(event)" />
-        </div>
-        <!-- 一番下の段 -->
-        <div class="keys">
-            <input type="button" value="Z" onclick="typed(event)" />
-            <input type="button" value="X" onclick="typed(event)" />
-            <input type="button" value="C" onclick="typed(event)" />
-            <input type="button" value="V" onclick="typed(event)" />
-            <input type="button" value="B" onclick="typed(event)" />
-            <input type="button" value="N" onclick="typed(event)" />
-            <input type="button" value="M" onclick="typed(event)" />
-        </div>
-        <div class="keys">
-            <input type="button" value="SPACE" onclick="typed(event)" />
+        <div class="ranking">
+            <h2>ランキング</h2>
+            <ol id="rankingList"></ol>
         </div>
     </div>
     <script src="main.js"></script>
 </body>
 </html>
+
+

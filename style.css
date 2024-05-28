@@ -79,3 +79,10 @@ span {
       font-size: 18px;
   }
 }
+
+.score {
+  font-size: 24px;
+  margin-top: 10px;
+  color: #fff;
+}
+

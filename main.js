@@ -1,27 +1,58 @@
 const questions = [
-  "ちゅきちゅき",
-  "かわちいい",
-  "イケメン",
-  "むむむ",
-  "やはやはやは",
-  "はにゃ?",
-  "あせあせ",
-  "きゅんきゅん",
-  "まじまんじ",
+  { question: "猫", answer: "ねこ" },
+  { question: "狸", answer: "たぬき" },
+  { question: "犬", answer: "いぬ" },
+  { question: "鳥", answer: "とり" },
+  { question: "魚", answer: "さかな" },
+  { question: "馬", answer: "うま" },
+  { question: "猿", answer: "さる" },
+  { question: "虎", answer: "とら" },
+  { question: "獅子", answer: "しし" }
 ];
-const questionsNum = questions.length; // 問題の総数
+
+// 初期設定
+const questionsNum = questions.length;
 let num = 0;
-let question;
+let currentQuestion;
+let score = 0;
+let level = 1;
+let time = 30;
 const result = document.querySelector(".result");
 const word = document.querySelector(".word");
+const questionDisplay = document.querySelector(".question");
+const scoreDisplay = document.getElementById("score");
+const levelDisplay = document.getElementById("level");
+const timeDisplay = document.getElementById("time");
+const rankingList = document.getElementById("rankingList");
+
+let timerInterval;
 
 // 問題をランダムで出題させる関数
 function setQuestion() {
-  question = questions.splice(Math.floor(Math.random() * questions.length), 1)[0];
-  word.textContent = question;
+  if (questions.length === 0) {
+    gameEnd();
+    return;
+  }
+  // 問題と答えをランダムに選択
+  currentQuestion = questions.splice(Math.floor(Math.random() * questions.length), 1)[0];
+  questionDisplay.textContent = currentQuestion.question;
+  word.textContent = "_".repeat(currentQuestion.answer.length); // 正解前はアンダーバーを表示
   num = 0;
-  move.cancel();
-  move.play();
+  time = 30 - (level - 1) * 5; // レベルが上がると制限時間が短くなる
+  if (time < 10) time = 10; // 最低でも10秒は与える
+  timeDisplay.textContent = time;
+  clearInterval(timerInterval);
+  timerInterval = setInterval(updateTimer, 1000);
+}
+
+// タイマーの更新
+function updateTimer() {
+  time--;
+  timeDisplay.textContent = time;
+  if (time <= 0) {
+    clearInterval(timerInterval);
+    gameEnd();
+  }
 }
 
 // キーが押された時の処理
@@ -42,63 +73,73 @@ function typed(e) {
 
 // キープレスの処理を共通化
 function handleKeyPress(key) {
-  // エンターキーが押された時
   if (key === "Enter") {
-    if (result.textContent == "[Enter] Game Start") {
+    if (result.textContent === "[Enter] Game Start") {
       result.textContent = `${questionsNum}/${questionsNum}`;
       setQuestion();
       return;
     }
   }
-  // タイプ時の処理
-  if (key !== question[num]) {
+  if (key !== currentQuestion.answer[num]) {
     return;
   }
-  // タイプ文字が合っていた時の処理
   num++;
-  word.textContent = "".repeat(num) + question.substring(num);
-  // 問題の単語をクリアした時
-  if (num === question.length) {
-    result.textContent = `${questions.length}/${questionsNum}`;
-    move.currentTime -= 2000;
-    if (move.currentTime < 0) {
-      move.currentTime = 0;
-    }
-    // 全ての問題をクリアした時の処理
+  score++;
+  scoreDisplay.textContent = score;
+  word.textContent = currentQuestion.answer.substring(0, num) + "_".repeat(currentQuestion.answer.length - num);
+  if (num === currentQuestion.answer.length) {
     if (questions.length === 0) {
       result.innerHTML = "おめでとう!! <span>[Enter]Restart Game</span>";
-      move.pause();
       gameEnd();
       return;
     }
-    setQuestion();
+    if (score >= level * 10) { // スコアが一定以上でレベルアップ
+      level++;
+      levelDisplay.textContent = level;
+    }
+    setTimeout(() => {
+      alert("正解: " + currentQuestion.answer); // 正解を表示
+      setQuestion();
+    }, 500); // 少し待ってから次の問題に進む
   }
 }
 
-// 文字を動かすアニメーション
-const move = word.animate([{ transform: "translateX(100vw)" }, { transform: "translateX(-100vw)" }], {
-  duration: 15000,
-  fill: "forwards",
-});
-move.pause();
-
-// ゲームオーバー処理
-move.onfinish = () => {
-  result.innerHTML = `${questions.length + 1}/${questionsNum} <span>[Enter]Restart Game</span>`;
-  gameEnd();
-};
-
 // ゲーム終了時の処理
 function gameEnd() {
+  saveScore();
+  displayRanking();
   document.removeEventListener("keydown", keyDown);
   document.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       location.reload();
     }
   });
+  clearInterval(timerInterval);
 }
 
+// スコアをローカルストレージに保存する関数
+function saveScore() {
+  const scores = JSON.parse(localStorage.getItem("scores")) || [];
+  scores.push(score);
+  scores.sort((a, b) => b - a);
+  localStorage.setItem("scores", JSON.stringify(scores.slice(0, 10)));
+}
 
+// ランキングを表示する関数
+function displayRanking() {
+  const scores = JSON.parse(localStorage.getItem("scores")) || [];
+  rankingList.innerHTML = "";
+  scores.forEach((score, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${index + 1}位: ${score}点`;
+    rankingList.appendChild(li);
+  });
+}
 
-
-
+// 初期状態を設定
+result.textContent = "[Enter] Game Start";
+word.textContent = "";
+scoreDisplay.textContent = "0";
+levelDisplay.textContent = "1";
+timeDisplay.textContent = "30";
+displayRanking();
