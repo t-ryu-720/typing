@@ -61,6 +61,9 @@ function keyDown(e) {
   handleKeyPress(e.key);
 }
 
+document.querySelectorAll(".key").forEach(key => {
+  key.addEventListener("click", typed);
+});
 // 仮想キーボードのボタンが押された時の処理
 function typed(e) {
   const input = e.target.value;
@@ -69,6 +72,11 @@ function typed(e) {
   } else {
     handleKeyPress(input.toLowerCase());
   }
+}
+
+function handleKeyPress(key) {
+  const output = document.getElementById("output");
+  output.textContent += key;
 }
 
 // キープレスの処理を共通化

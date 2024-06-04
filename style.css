@@ -1,9 +1,10 @@
 body {
-  font-size: 42px;
+  font-size: 24px;  /* フォントサイズを小さくする */
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   overflow-x: hidden;
-  background: linear-gradient(to right, #00c6ff, #0072ff);
+  background: url('https://game-materials.com/wp-content/uploads/2023/10/sandy-beach-daytime1-1024x576.jpg') no-repeat center center fixed;
+  background-size: cover;
   color: #fff;
   text-align: center;
 }
@@ -13,44 +14,44 @@ body {
 }
 
 span {
-  font-size: 24px;
+  font-size: 18px;  /* スパンのフォントサイズを小さくする */
 }
 
 .keyboard-wrapper {
-  min-width: 300px;
-  max-width: 650px;
-  padding: 20px;
-  border-radius: 15px;
+  min-width: 280px;  /* 最小幅を小さくする */
+  max-width: 600px;  /* 最大幅を小さくする */
+  padding: 10px;  /* パディングを小さくする */
+  border-radius: 10px;  /* ボーダー半径を小さくする */
   background: #2d2d2d;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  margin: 20px auto;
+  margin: 15px auto;  /* マージンを小さくする */
 }
 
 .keys {
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 8px;  /* マージンを小さくする */
 }
 
 .keys input {
-  height: 60px;
-  min-width: 45px;
-  padding: 6px;
+  height: 45px;  /* ボタンの高さを小さくする */
+  min-width: 35px;  /* ボタンの最小幅を小さくする */
+  padding: 4px;  /* パディングを小さくする */
   border: none;
   outline: none;
   background: linear-gradient(145deg, #4b4b4b, #2d2d2d);
   box-shadow: 4px 4px 8px #1a1a1a, -4px -4px 8px #404040;
-  margin: 4px;
+  margin: 3px;  /* マージンを小さくする */
   color: #fff;
-  font-size: 20px;
-  border-radius: 10px;
+  font-size: 16px;  /* フォントサイズを小さくする */
+  border-radius: 8px;  /* ボーダー半径を小さくする */
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
 .keys input:hover {
-  background: linear-gradient(145deg, #2d2d2d, #4b4b4b);
-  box-shadow: inset 4px 4px 8px #1a1a1a, inset -4px -4px 8px #404040;
+  background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+  box-shadow: inset 2px 2px 4px #1a1a1a, inset -2px -2px 4px #404040;
 }
 
 .keys input:active {
@@ -59,30 +60,43 @@ span {
 }
 
 .keys input:focus {
-  font-size: 19px;
+  font-size: 15px;
   font-weight: bold;
   color: #66db34;
 }
 
 .keys input[value="SPACE"] {
-  width: 60%;
+  width: 50%;  /* スペースキーの幅を小さくする */
 }
 
 @media (max-width: 480px) {
   .keyboard-wrapper {
-      padding: 6px;
+      padding: 4px;  /* パディングをさらに小さくする */
   }
 
   .keys input {
-      height: 40px;
-      min-width: 30px;
-      font-size: 18px;
+      height: 35px;  /* ボタンの高さをさらに小さくする */
+      min-width: 25px;  /* ボタンの最小幅をさらに小さくする */
+      font-size: 14px;  /* フォントサイズをさらに小さくする */
   }
 }
 
 .score {
-  font-size: 24px;
-  margin-top: 10px;
+  font-size: 18px;  /* スコアのフォントサイズを小さくする */
+  margin-top: 8px;  /* マージンを小さくする */
   color: #fff;
 }
+
+.ranking {
+  flex: 1;
+  max-width: 200px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: #000;  /* ランキングの文字の色を黒に変更する */
+}
+
+
+
 
