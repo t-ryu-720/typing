@@ -1,0 +1,11 @@
+const questions = [
+  { question: "柳葉魚", answer: "ししゃも" },
+  { question: "泥鰌", answer: "どじょう" },
+  { question: "海月", answer: "クラゲ" },
+  { question: "鮑", answer: "アワビ" },
+  { question: "浅蜊", answer: "アサリ" },
+  { question: "蛸", answer: "たこ" },
+  { question: "鰻", answer: "うなぎ" },
+  { question: "隈魚", answer: "くまのみ" },
+  { question: "鯖", answer: "さば" }
+];

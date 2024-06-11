@@ -5,8 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勉強タイピングGame</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .ranking {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px; /* 必要に応じて幅を調整 */
+            padding: 10px;
+            background-color: #000; /* 必要に応じて背景色を変更 */
+            color: #fff; 
+            border: 1px solid #ccc; /* 必要に応じてボーダーを変更 */
+        }
+
+        .status {
+            margin-left: 220px; /* ランキングの幅 + 余白 */
+        }
+    </style>
 </head>
 <body>
+    <div class="ranking">
+        <h2>ランキング</h2>
+        <ol id="rankingList"></ol>
+    </div>
     <div class="status">
         <p class="result">[Enter] Game Start</p>
         <p class="level">レベル: <span id="level">1</span></p>
@@ -51,12 +71,9 @@
                 <input type="button" value="SPACE" onclick="typed(event)" />
             </div>
         </div>
-        <div class="ranking">
-            <h2>ランキング</h2>
-            <ol id="rankingList"></ol>
-        </div>
     </div>
     <script src="main.js"></script>
 </body>
 </html>
+
 

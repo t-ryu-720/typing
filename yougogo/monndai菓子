@@ -1,0 +1,11 @@
+const questions = [
+  { question: "花林糖", answer: "かりんとう" },
+  { question: "加須底羅", answer: "かすてら" },
+  { question: "欠氷", answer: "かきごおり" },
+  { question: "査古律", answer: "チョコレート" },
+  { question: "鯛焼", answer: "たいやき" },
+  { question: "銅鑼焼", answer: "どらやき" },
+  { question: "最中", answer: "もなか" },
+  { question: "羊羹", answer: "ようかん" },
+  { question: "牡丹餅", answer: "ぼたもち" }
+];

@@ -1,0 +1,11 @@
+const questions = [
+  { question: "紫陽花", answer: "あじさい" },
+  { question: "土筆", answer: "つくし" },
+  { question: "柚子", answer: "ゆず" },
+  { question: "胡瓜", answer: "きゅうり" },
+  { question: "百合", answer: "ゆり" },
+  { question: "蓮根", answer: "れんこん" },
+  { question: "甘藍", answer: "きゃべつ" },
+  { question: "榎", answer: "えのき" },
+  { question: "芒果", answer: "マンゴー" }
+];

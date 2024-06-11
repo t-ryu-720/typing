@@ -1,0 +1,11 @@
+const questions = [
+  { question: "蟻", answer: "あり" },
+  { question: "", answer: "" },
+  { question: "", answer: "" },
+  { question: "", answer: "" },
+  { question: "", answer: "" },
+  { question: "", answer: "" },
+  { question: "", answer: "" },
+  { question: "", answer: "" },
+  { question: "", answer: "" }
+];
